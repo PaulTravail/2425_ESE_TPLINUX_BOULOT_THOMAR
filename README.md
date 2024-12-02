@@ -13,3 +13,11 @@ Vérifiez que vous avez bien 32GB de disponible sur la carte SD.
 Comme on peut le voir, on utilise désormais 14GB sur la carte.
 
 ## 1.3.3 Configuration réseau
+
+### 1.4 Découverte de la cible
+
+cat cpuinfo donne les informations sur les processeurs présents sur la cible.
+
+cat ioports ne montre rien car le fichier est vide sous linux.
+
+cat iomem montre ce qui est présent dans la mémoire en nous précisant l'adresse et ce qu'elle contient.
