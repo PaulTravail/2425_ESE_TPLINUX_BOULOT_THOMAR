@@ -5,10 +5,10 @@
 ## 1.3.2 Utilisez un logiciel de liaison série
 
 L’image copiée précédemment n’occupe pas la totalité de la carte SD. Quelle est la taille occupée ?
-<p align="center"> <img src="Img/df -h.png" width="100%" height="auto" /> </p>
+<p align="center"> <img src="Img/df -h.png" width="60%" height="auto" /> </p>
 Comme on peut le voir, seulement 3 Go de la carte SD sont occupés.
 
 Vérifiez que vous avez bien 32GB de disponible sur la carte SD.
-<p align="center"> <img src="Img/df -h2.png" width="100%" height="auto" /> </p>
+<p align="center"> <img src="Img/df -h2.png" width="60%" height="auto" /> </p>
 Comme on peut le voir, on utilise désormais 14GB sur la carte.
 ## 1.3.3 Configuration réseau
