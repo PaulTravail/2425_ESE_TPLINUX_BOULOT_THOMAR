@@ -19,10 +19,15 @@ Comme on peut le voir, on utilise désormais 14GB sur la carte. (notre carte SD 
 ## 1.4.1 Exploration des dossiers /sys/class et /proc
 
 cat cpuinfo donne les informations sur les processeurs présents sur la cible.
+<p align="center"> <img src="Img/catcpuinfo.png" width="60%" height="auto" /> </p>
 
 cat ioports ne montre rien car le fichier est vide sous linux.
 
+
 cat iomem montre ce qui est présent dans la mémoire en nous précisant l'adresse et ce qu'elle contient.
+<p align="center"> <img src="Img/catiomem.png" width="60%" height="auto" /> </p>
+
+<p align="center"> <img src="Img/devicetreesoc.png" width="60%" height="auto" /> </p>
 
 ## 1.4.2 Compilation croisée
 
