@@ -6,7 +6,7 @@
 
 L’image copiée précédemment n’occupe pas la totalité de la carte SD. Quelle est la taille occupée ?
 <p align="center"> <img src="Img/df -h.png" width="60%" height="auto" /> </p>
-Comme on peut le voir, seulement 3 Go de la carte SD sont occupés.
+Comme on peut le voir, seulement 3 Go de la carte SD sont occupés. (/dev/root)
 
 Vérifiez que vous avez bien 32GB de disponible sur la carte SD.
 <p align="center"> <img src="Img/df -h2.png" width="60%" height="auto" /> </p>
@@ -30,8 +30,20 @@ On préfère compiler sur notre pc plutôt que sur le gcc du SoC pour une questi
 
 ## 1.4.3 Hello world !
 
+Code du Hello world
+```C
+#include <stdio.h>
+
+int main(void){
+    printf("Hello World!\n");
+    return 0;
+}
+```
+<p align="center"> <img src="Img/hello_world.png" width="60%" height="auto" /> </p>
+
 ## 1.4.5 Chenillard (Et oui, encore !)
 
+Code du chenillard
 ```C
 #include <stdio.h>
 #include <unistd.h>
@@ -61,7 +73,7 @@ int main() {
             outfile = fopen(path, "w");
             fprintf(outfile, "0");  // Eteindre la LED (0)
             fclose(outfile);
-            usleep(50000);           
+            usleep(50000);      
         }
     }
     return 0;
@@ -70,5 +82,67 @@ int main() {
 
 ### 2.1 Accès aux registres
 
+Code permettant d'allumer la 8ème led du SoC en utilisant les registres
+```C
+#include <stdio.h>
+#include <stdint.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <fcntl.h>
+
+int main(){
+    
+    uint32_t * p;
+    int fd = open("/dev/mem", O_RDWR); // ouvrir la mémoire
+    p = (uint32_t *) mmap(NULL, 4, PROT_WRITE|PROT_READ, MAP_SHARED, fd, 0xFF203000);
+    *p = (1<<8); // allumer led 8
+    return 0;
+}
+```
 Depuis l'espace utilisateur, le programme ne peut pas modifier tous les registres et son espace mémoire est limité.
+
+### 2.2 Compilation de module noyau sur la VM
+Voici le code du module "Hello world Module"
+```C
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+
+#define DRIVER_AUTHOR "Christophe Barès"
+#define DRIVER_DESC "Hello world Module"
+#define DRIVER_LICENSE "GPL"
+
+int hello_init(void)
+{
+	printk(KERN_INFO "Hello world!\n");
+	return 0;
+}
+
+void hello_exit(void)
+{
+	printk(KERN_ALERT "Bye bye...\n");
+}
+
+module_init(hello_init);
+module_exit(hello_exit);
+
+MODULE_LICENSE(DRIVER_LICENSE);
+MODULE_AUTHOR(DRIVER_AUTHOR);
+MODULE_DESCRIPTION(DRIVER_DESC);
+```
+la Commande modinfo du module hello.ko nous donne :
+<p align="center"> <img src="Img/modinfo.png" width="60%" height="auto" /> </p>
+
+Après avoir chargé le module en utilisant la commande insmode, en tapant "make all" on obtient le résultat suivant :
+<p align="center"> <img src="Img/compile_noyau_all.png" width="60%" height="auto" /> </p>
+
+La commande "make clean" donne le résultat suivant :
+<p align="center"> <img src="Img/compile_noyau_clean.png" width="60%" height="auto" /> </p>
+
+La commande "dmesg" donne le résultat suivant :
+<p align="center"> <img src="Img/dmesg.png" width="60%" height="auto" /> </p>
+
+Cette commande permet d'afficher les messages envoyés par KERN_INFO et KERN_ALERT
+
+Pour supprimer le module on utilise rmmod.
 
