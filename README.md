@@ -154,3 +154,15 @@ Cette commande permet d'afficher les messages envoyés par KERN_INFO et KERN_ALE
 
 Pour supprimer le module on utilise rmmod.
 
+### 2.3 CrossCompilation de modules noyau
+
+## 2.3.0 Récupération du Noyau Terasic (c’est déjà fait dans la VM !)
+
+Commande uname -a sur la carte VEEK : 
+<p align="center"> <img src="Img/uname-a.png" width="60%" height="auto" /> </p>
+
+## 2.3.1 Préparation de la compilation
+
+Chemin vers les compilateurs :
+<p align="center"> <img src="Img/whereis_arm-linux-gnueabihf-gcc.png" width="60%" height="auto" /> </p>
+
