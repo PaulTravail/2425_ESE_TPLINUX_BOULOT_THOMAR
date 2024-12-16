@@ -24,10 +24,13 @@ cat cpuinfo donne les informations sur les processeurs présents sur la cible.
 cat ioports ne montre rien car le fichier est vide sous linux.
 
 
-cat iomem montre ce qui est présent dans la mémoire en nous précisant l'adresse et ce qu'elle contient.
+cat iomem montre ce qui est présent dans la mémoire en nous précisant l'adresse et ce qu'elle contient :
 <p align="center"> <img src="Img/catiomem.png" width="60%" height="auto" /> </p>
+Ce fichier donne une vue de la mémoire mappée, y compris les adresses mémoire utilisées par les périphériques.
 
+Le répertoire /proc/device-tree/sopc@0 contient la structure de données décrivant les périphériques d’une machine :
 <p align="center"> <img src="Img/devicetreesoc.png" width="60%" height="auto" /> </p>
+Ce fichier appartient au système de fichiers virtuels de le device tree (arbre des périphériques), qui est utilisé pour décrire les ressources matérielles du système. Le device tree est utile pour les périphériques non découvrables ou énumérables et permet aussi d'éviter beaucoup de code redondant pour décrire les périphériques.
 
 ## 1.4.2 Compilation croisée
 
