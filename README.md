@@ -134,7 +134,7 @@ la Commande modinfo du module hello.ko nous donne :
 <p align="center"> <img src="Img/modinfo.png" width="60%" height="auto" /> </p>
 
 Après avoir chargé le module en utilisant la commande insmode, en tapant "make all" on obtient le résultat suivant :
-<p align="center"> <img src="Img/compile_noyau_all.png" width="60%" height="auto" /> </p>
+
 
 La commande "make clean" donne le résultat suivant :
 <p align="center"> <img src="Img/compile_noyau_clean.png" width="60%" height="auto" /> </p>
