@@ -10,7 +10,7 @@ Comme on peut le voir, seulement 3 Go de la carte SD sont occupés.
 
 Vérifiez que vous avez bien 32GB de disponible sur la carte SD.
 <p align="center"> <img src="Img/df -h2.png" width="60%" height="auto" /> </p>
-Comme on peut le voir, on utilise désormais 14GB sur la carte.
+Comme on peut le voir, on utilise désormais 14GB sur la carte. (notre carte SD fait 16GB)
 
 ## 1.3.3 Configuration réseau
 
