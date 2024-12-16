@@ -21,3 +21,8 @@ cat cpuinfo donne les informations sur les processeurs présents sur la cible.
 cat ioports ne montre rien car le fichier est vide sous linux.
 
 cat iomem montre ce qui est présent dans la mémoire en nous précisant l'adresse et ce qu'elle contient.
+
+### 2.1 Accès aux registres
+
+Les processus ne peuvent pas partager les registres, lorsqu’un changement de processus
+survient, le contexte matériel est sauvegardé dans la pile système.
